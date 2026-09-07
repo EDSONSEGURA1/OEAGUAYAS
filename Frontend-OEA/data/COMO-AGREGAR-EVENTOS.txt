@@ -1,0 +1,56 @@
+CÓMO AGREGAR UN EVENTO NUEVO A LA PÁGINA
+==========================================
+
+No necesitas saber programar. Solo tienes que editar el archivo:
+
+    data/eventos.json
+
+Ábrelo con el Bloc de notas (clic derecho → Abrir con → Bloc de notas)
+o con cualquier editor de texto simple.
+
+Vas a ver una lista de eventos, cada uno con esta forma:
+
+    {
+      "title": "Feria de Ciencias 2026",
+      "date": "2026-10-14",
+      "description": "Nuestros estudiantes de Bachillerato exponen proyectos de investigación aplicada.",
+      "imageUrl": "../img/escudo-oea.png"
+    },
+
+PARA AGREGAR UN EVENTO NUEVO:
+
+1. Copia uno de los bloques completos (desde la llave { hasta la llave
+   } incluyendo la coma final).
+2. Pégalo justo antes del cierre de la lista (el corchete final ] ).
+3. Cambia los textos:
+   - "title": el nombre del evento
+   - "date": la fecha en formato AAAA-MM-DD (año-mes-día)
+   - "description": una descripción corta
+   - "imageUrl": si tienes una foto del evento, súbela a la carpeta
+     "img" y escribe aquí "img/nombre-de-tu-foto.jpg". Si no tienes
+     foto, puedes dejar "img/escudo-oea.png".
+4. Guarda el archivo (Ctrl + S). Mantenlo como texto plano (.json), no
+   lo guardes como .txt ni como Word.
+5. Recarga la página de Eventos en el navegador y el evento nuevo va a
+   aparecer automáticamente.
+
+PARA QUITAR UN EVENTO:
+
+Simplemente borra su bloque completo (desde la llave { hasta la llave
+} con su coma).
+
+IMPORTANTE:
+
+- Cada bloque de evento va separado por una coma, EXCEPTO el último de
+  la lista, que no lleva coma al final.
+- Si guardas el archivo y la página deja de mostrar eventos, revisa que
+  no haya quedado una coma de más o una llave sin cerrar. La forma más
+  fácil de verificar esto es copiar todo el contenido del archivo y
+  pegarlo en https://jsonlint.com para que te diga si hay algún error.
+
+NOTA TÉCNICA (para quien dé mantenimiento más adelante):
+Este archivo es un reemplazo temporal y manual de una base de datos.
+Cuando el backend (NestJS + Prisma + Supabase) esté listo, solo hay que
+cambiar la línea "apiUrl" en js/main.js para que apunte al endpoint real
+de la API, y todo lo demás (la tarjeta, el formato de fecha, los estados
+de carga) sigue funcionando igual sin tocar el HTML ni el CSS.

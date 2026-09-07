@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum NivelEducativo {
+  INICIAL
+  BASICA
+  BACHILLERATO
+}
+
+enum JornadaEstudio {
+  MATUTINA
+  VESPERTINA
+}
+
+enum EstadoMatricula {
+  PENDIENTE
+  CONTACTADO
+  MATRICULADO
+  DESCARTADO
+}
+
+model Evento {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  date        DateTime
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("eventos")
+}
+
+model Matricula {
+  id                 String          @id @default(uuid())
+  nombreEstudiante   String
+  nivel              NivelEducativo
+  jornada            JornadaEstudio
+  nombreRepresentante String
+  telefonoRepresentante String
+  emailRepresentante String?
+  mensaje            String?
+  estado             EstadoMatricula @default(PENDIENTE)
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+
+  @@map("matriculas")
+}

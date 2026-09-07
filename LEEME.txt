@@ -1,0 +1,315 @@
+PROYECTO WEB-OEA
+================
+
+Este proyecto tiene dos partes:
+
+Frontend-OEA/
+  El sitio web (HTML, CSS, JS). Se abre poniéndolo en htdocs de XAMPP y
+  accediendo por http://localhost/Web-OEA/Frontend-OEA/ (nunca con doble
+  clic al archivo).
+
+Backend-OEA/
+  La API (NestJS + Prisma) que conecta el formulario de Matriculación y
+  la sección de Eventos a una base de datos real en Supabase. Instrucciones
+  completas de instalación y despliegue en Backend-OEA/README.md.
+
+Mientras el backend no esté desplegado, el sitio sigue funcionando con
+el archivo manual Frontend-OEA/data/eventos.json para Eventos, y el
+formulario de Matriculación mostrará un mensaje pidiendo usar WhatsApp
+o correo si el backend todavía no responde.
+PROYECTO WEB-OEA
+================
+
+Sitio web de la Unidad Educativa Particular O.E.A. (GUAYAS#621).
+
+ESTRUCTURA
+----------
+
+Frontend-OEA/
+  Sitio web estático: HTML, CSS, JavaScript, imágenes y eventos manuales.
+
+Backend-OEA/
+  API NestJS + Prisma. Conecta Eventos y Matriculación con Supabase.
+
+
+TRABAJO PENDIENTE - ORDEN RECOMENDADO
+=====================================
+
+1. CONSEGUIR FOTOGRAFÍAS REALES
+--------------------------------
+
+Conseguir estas 10 fotografías. Tomarlas en horizontal y guardarlas con
+exactamente estos nombres:
+
+  01-fachada-colegio.jpg
+    Debe verse la entrada completa y el nombre de la institución.
+    Uso: página principal y página Contactos.
+
+  02-aula-clases.jpg
+    Estudiantes trabajando en un aula limpia y bien iluminada.
+    Uso: página principal y sección de Matriculación.
+
+  03-actividad-academica.jpg
+    Una exposición, experimento, lectura o proyecto escolar.
+    Uso: Blog y página principal.
+
+  04-deportes.jpg
+    Estudiantes practicando básquet, fútbol u otra actividad deportiva.
+    Uso: Blog y Eventos.
+
+  05-evento-institucional.jpg
+    Una feria, casa abierta, ceremonia o celebración del colegio.
+    Uso: Eventos y página principal.
+
+  06-docentes.jpg
+    Personal docente en una actividad o fotografía grupal autorizada.
+    Uso: página Nosotros y página principal.
+
+  07-educacion-inicial.jpg
+    Niños de Educación Inicial realizando una actividad, con autorización.
+    Uso: Oferta Académica y Matriculación.
+
+  08-educacion-basica.jpg
+    Estudiantes de Educación Básica participando en clase o proyecto.
+    Uso: Oferta Académica y Matriculación.
+
+  09-bachillerato.jpg
+    Estudiantes de Bachillerato trabajando en una actividad académica.
+    Uso: Oferta Académica y Matriculación.
+
+  10-espacios-colegio.jpg
+    Patio, laboratorio, biblioteca, cancha u otro espacio representativo.
+    Uso: página principal, Nosotros y Contactos.
+
+Requisitos de las fotografías:
+
+  - Preferiblemente horizontales y de aproximadamente 1600 x 900 píxeles.
+  - Buena iluminación y fondo ordenado.
+  - Personas realizando actividades naturales, no imágenes borrosas.
+  - No mostrar documentos, números telefónicos ni información privada.
+  - Solicitar autorización para publicar fotografías donde aparezcan menores.
+  - Evitar filtros fuertes, marcas de agua y fotografías tomadas de internet.
+
+
+2. GUARDAR LAS FOTOGRAFÍAS
+---------------------------
+
+Guardar las imágenes optimizadas dentro de:
+
+  Frontend-OEA/img/fotos-colegio/
+
+La carpeta debe quedar así:
+
+  Frontend-OEA/img/fotos-colegio/01-fachada-colegio.jpg
+  Frontend-OEA/img/fotos-colegio/02-aula-clases.jpg
+  Frontend-OEA/img/fotos-colegio/03-actividad-academica.jpg
+  Frontend-OEA/img/fotos-colegio/04-deportes.jpg
+  Frontend-OEA/img/fotos-colegio/05-evento-institucional.jpg
+  Frontend-OEA/img/fotos-colegio/06-docentes.jpg
+  Frontend-OEA/img/fotos-colegio/07-educacion-inicial.jpg
+  Frontend-OEA/img/fotos-colegio/08-educacion-basica.jpg
+  Frontend-OEA/img/fotos-colegio/09-bachillerato.jpg
+  Frontend-OEA/img/fotos-colegio/10-espacios-colegio.jpg
+
+Preferir JPG o WebP. Mantener PNG solo para logotipos o imágenes que necesiten
+transparencia. No borrar escudo-oea.png porque todavía se usa en el sitio.
+
+
+3. MEJORAR EL CONTENIDO VISUAL
+------------------------------
+
+Cuando estén las fotos:
+
+  - Reemplazar el escudo repetido en las tarjetas de Blog por fotos reales.
+  - Usar la fachada o una actividad destacada como imagen principal de Inicio.
+  - Asignar una imagen propia a cada Evento.
+  - Agregar una foto del colegio junto al formulario de Matriculación.
+  - Agregar una foto de la fachada en Contactos.
+  - Mantener la misma proporción de imagen en todas las tarjetas.
+  - Usar textos alternativos descriptivos en cada imagen.
+  - Convertir "Leer más" del Blog en enlaces cuando existan artículos completos.
+
+Archivos principales que se deben editar:
+
+  Frontend-OEA/index.html
+  Frontend-OEA/blog.html
+  Frontend-OEA/eventos.html
+  Frontend-OEA/matriculacion.html
+  Frontend-OEA/contactos.html
+  Frontend-OEA/css/style.css
+
+
+4. CONFIRMAR LA UBICACIÓN DEL MAPA
+----------------------------------
+
+La página Contactos busca actualmente:
+
+  UNIDAD EDUCATIVA PARTICULAR O.E.A. (GUAYAS#621)
+
+Comprobar que el pin de Google Maps sea correcto. Lo más confiable es obtener
+el enlace oficial de Google Maps o las coordenadas exactas de la institución.
+Si el pin es incorrecto, reemplazar la consulta del iframe en:
+
+  Frontend-OEA/contactos.html
+
+También se recomienda agregar un botón "Cómo llegar" que abra la ruta en
+Google Maps.
+
+
+5. PROBAR EL FRONTEND
+---------------------
+
+No abrir los HTML con doble clic, porque el navegador puede bloquear la carga
+de archivos JSON y algunas funciones. Usar un servidor local.
+
+Desde la carpeta Web-OEA:
+
+  cd Frontend-OEA
+  python -m http.server 8080
+
+Abrir:
+
+  http://localhost:8080/index.html
+  http://localhost:8080/blog.html
+  http://localhost:8080/matriculacion.html
+  http://localhost:8080/contactos.html
+
+Revisar menú móvil, enlaces, imágenes, formulario, mapa y diseño en teléfono
+y computadora.
+
+
+6. CONFIGURAR Y PROBAR EL BACKEND
+---------------------------------
+
+Abrir una terminal en Backend-OEA y crear un archivo .env con las variables
+de Supabase. No copiar contraseñas dentro de este documento ni subir .env a
+GitHub. El archivo .env ya está excluido por .gitignore.
+
+Comandos:
+
+  npm install
+  npx prisma generate
+  npx prisma migrate dev --name init
+  npm run seed
+  npm run build
+  npm run start:dev
+
+El seed debe dejar exactamente 3 eventos de ejemplo. Si se ejecuta varias
+veces, no debe crear duplicados.
+
+Probar en otra terminal:
+
+  GET  http://localhost:3000/events
+  POST http://localhost:3000/matriculas
+
+El POST de prueba debe usar estos datos:
+
+  nombreEstudiante: Prueba Test
+  nivel: BACHILLERATO
+  jornada: VESPERTINA
+  nombreRepresentante: Representante Test
+  telefonoRepresentante: 0999999999
+
+La respuesta esperada del POST es HTTP 201 y un registro con estado
+PENDIENTE.
+
+
+7. SEGURIDAD
+------------
+
+Antes de producción:
+
+  - Cambiar la contraseña de Supabase si alguna vez fue compartida.
+  - Nunca subir .env a GitHub.
+  - Configurar ADMIN_API_KEY en el entorno del backend.
+  - Mantener protegidos GET /matriculas y GET /matriculas/:id.
+  - Usar el header x-admin-key para consultas administrativas.
+  - Mantener POST /matriculas público para el formulario del sitio.
+  - Usar HTTPS en el despliegue.
+  - Configurar CORS solo con el dominio real del sitio publicado.
+
+
+8. CONECTAR EL FRONTEND CON EL BACKEND
+---------------------------------------
+
+Mientras el backend no esté publicado:
+
+  - Eventos usa Frontend-OEA/data/eventos.json.
+  - Matrículas intenta usar http://localhost:3000/matriculas.
+
+Cuando exista una URL pública, actualizar en:
+
+  Frontend-OEA/js/main.js
+
+Cambiar EVENTOS_CONFIG.apiUrl al endpoint público /events y
+MATRICULAS_CONFIG.apiUrl al endpoint público /matriculas.
+
+
+9. PUBLICAR EL BACKEND
+----------------------
+
+Crear o usar un repositorio de GitHub que contenga únicamente Backend-OEA.
+No publicar la carpeta personal completa ni el archivo .env.
+
+En Render o Railway crear un Web Service con:
+
+  Build command:
+    npm install && npx prisma generate && npm run build
+
+  Start command:
+    npm run start
+
+Variables de entorno:
+
+  DATABASE_URL
+  DIRECT_URL
+  CORS_ORIGINS
+  ADMIN_API_KEY
+  PORT (el proveedor normalmente lo proporciona automáticamente)
+
+Después del despliegue probar:
+
+  GET https://DOMINIO-PUBLICO/events
+
+Actualizar el frontend con ese dominio y volver a probar Eventos y
+Matriculación desde el sitio publicado.
+
+
+10. LISTA FINAL DE COMPROBACIÓN
+-------------------------------
+
+  [ ] Fotografías reales conseguidas y autorizadas.
+  [ ] Imágenes optimizadas y guardadas en Frontend-OEA/img/.
+  [ ] Inicio, Blog, Eventos, Matriculación y Contactos actualizados.
+  [ ] Pin del mapa confirmado.
+  [ ] Formulario probado correctamente.
+  [ ] Backend compila sin errores.
+  [ ] Migración de Supabase aplicada.
+  [ ] Seed probado sin duplicados.
+  [ ] API key configurada en producción.
+  [ ] Archivo .env fuera de GitHub.
+  [ ] Backend publicado.
+  [ ] Frontend conectado al backend público.
+  [ ] Sitio revisado en computadora y teléfono.
+
+
+ESTADO ACTUAL
+=============
+
+Ya está realizado:
+
+  - Backend NestJS + Prisma funcionando.
+  - Conexión local con Supabase verificada.
+  - Migración aplicada.
+  - Seed corregido para evitar duplicados.
+  - GET /events probado con 3 eventos.
+  - POST /matriculas probado correctamente.
+  - Endpoints administrativos protegidos con API key.
+  - Formulario dividido en grupos de estudiante y representante.
+  - Tarjetas visuales del Blog implementadas.
+  - Mapa actualizado con el nombre oficial de la institución.
+
+Enlaces locales actuales:
+
+  Sitio web: http://localhost:8080/index.html
+  API:       http://localhost:3000/events
