@@ -85,7 +85,7 @@ const EVENTOS_CONFIG = {
   // Fuente manual actual: el archivo que edita el colegio.
   // Para conectar el backend real, reemplazar por su URL, ej:
   // 'https://api.colegiooea.edu.ec/events'
-  apiUrl: 'data/eventos.json',
+  apiUrl: `${CONFIG.API_URL}/events`,
   maxEventos: 6,
 };
 
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', cargarEventos);
 const MATRICULAS_CONFIG = {
   // Cuando el backend esté desplegado, reemplazar por su URL real, ej:
   // 'https://oea-backend.onrender.com/matriculas'
-  apiUrl: 'http://localhost:3000/matriculas',
+  apiUrl: `${CONFIG.API_URL}/matriculas`,
 };
 
 (function initMatriculaForm() {
