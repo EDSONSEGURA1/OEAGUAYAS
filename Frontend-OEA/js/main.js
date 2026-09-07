@@ -117,10 +117,9 @@ async function cargarEventos() {
     console.error('No se pudieron cargar los eventos:', error);
     mostrarError(
       errorBox,
-      'No se pudieron cargar los eventos. Si estás abriendo el archivo directamente ' +
-      '(doble clic), ábrelo en cambio a través de http://localhost/... con el servidor ' +
-      'de XAMPP encendido — los navegadores bloquean la lectura de archivos locales ' +
-      'cuando se abren con "Archivo:///".'
+      'No se pudieron cargar los eventos. La API no está disponible o el servidor ' +
+      'está bloqueando la solicitud desde Vercel. Revisa el despliegue y la configuración ' +
+      'CORS del backend.'
     );
     grid.innerHTML = '';
   } finally {
