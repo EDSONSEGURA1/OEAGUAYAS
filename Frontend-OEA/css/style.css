@@ -60,6 +60,53 @@ h3 { font-size: 1.15rem; font-weight: 700; }
 
 p { margin: 0 0 1em; max-width: 62ch; color: var(--ink-soft); }
 
+.catalog-grid, .staff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.catalog-card, .staff-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.catalog-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--paper-tint);
+}
+
+.catalog-card > div, .staff-card { padding: 1.25rem; }
+.catalog-card h2, .staff-card h2 { font-size: 1.15rem; }
+.catalog-note { color: var(--gold-600); font-size: 0.9rem; font-weight: 700; }
+.image-pending { object-fit: contain !important; padding: 2.5rem; }
+
+.staff-intro {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) 1.2fr;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--turquoise-100);
+  border-radius: var(--radius-md);
+}
+
+.staff-intro img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.staff-card { display: flex; gap: 1rem; align-items: flex-start; }
+.staff-card p { margin-bottom: 0; }
+
 a { color: var(--turquoise-600); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -669,7 +716,9 @@ ul { padding: 0; margin: 0; list-style: none; }
   .hero-figure { order: -1; max-width: 260px; }
   .historia-grid,
   .matricula-inner,
-  .contacto-inner { grid-template-columns: 1fr; }
+  .contacto-inner,
+  .staff-intro { grid-template-columns: 1fr; }
+  .catalog-grid, .staff-grid { grid-template-columns: 1fr; }
   .identidad-grid { grid-template-columns: 1fr; }
   .identidad-card--wide { grid-column: span 1; }
   .matricula-actions { flex-direction: row; }
