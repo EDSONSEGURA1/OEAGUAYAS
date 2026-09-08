@@ -78,7 +78,7 @@ p { margin: 0 0 1em; max-width: 62ch; color: var(--ink-soft); }
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  background: var(--paper-tint);
+  background: var(--white);
 }
 
 .catalog-card > div, .staff-card { padding: 1.25rem; }
@@ -101,16 +101,50 @@ p { margin: 0 0 1em; max-width: 62ch; color: var(--ink-soft); }
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  background: var(--white);
   border-radius: var(--radius-sm);
 }
 
-.staff-card { display: flex; gap: 1rem; align-items: flex-start; }
+.staff-card { display: block; padding: 0; }
+.staff-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--white); }
+.staff-card > div { padding: 1rem 1.25rem 1.25rem; }
 .staff-card p { margin-bottom: 0; }
+
+.community-heading { max-width: 700px; margin-bottom: 3rem; }
+.community-heading .hero-kicker { margin-bottom: 0.4rem; }
+.community-block + .community-block { margin-top: 4rem; }
+.community-block-heading { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+.community-block-heading h2 { margin-bottom: 0.35rem; }
+.community-block-heading p { margin-bottom: 0; }
+.section-label { color: var(--gold-600); font-family: var(--font-display); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; padding-top: 0.25rem; }
+
+.coming-soon {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+.coming-soon-mark { display: inline-grid; place-items: center; width: 68px; height: 68px; margin-bottom: 1.2rem; border-radius: 50%; background: var(--navy-900); color: var(--gold-500); font-family: var(--font-display); font-weight: 800; }
+.coming-soon h2 { margin-bottom: 0.6rem; }
+.coming-soon p { margin: 0 auto 1.5rem; }
 
 a { color: var(--turquoise-600); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 img { max-width: 100%; display: block; }
+
+.content-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+}
 
 ul { padding: 0; margin: 0; list-style: none; }
 

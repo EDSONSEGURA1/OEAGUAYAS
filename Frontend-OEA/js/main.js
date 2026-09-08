@@ -3,6 +3,18 @@
    ========================================================= */
 
 /* ---------- Navegación: menú móvil y header al hacer scroll ---------- */
+document.addEventListener('error', (evento) => {
+  if (evento.target instanceof HTMLImageElement) {
+    evento.target.style.visibility = 'hidden';
+  }
+}, true);
+
+document.querySelectorAll('img').forEach((imagen) => {
+  if (imagen.complete && imagen.naturalWidth === 0) {
+    imagen.style.visibility = 'hidden';
+  }
+});
+
 (function initNav() {
   const header = document.getElementById('site-header');
   const toggle = document.getElementById('nav-toggle');

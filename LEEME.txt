@@ -115,7 +115,37 @@ Preferir JPG o WebP. Mantener PNG solo para logotipos o imágenes que necesiten
 transparencia. No borrar escudo-oea.png porque todavía se usa en el sitio.
 
 
-3. MEJORAR EL CONTENIDO VISUAL
+3. FOTOGRAFÍAS INDIVIDUALES DEL EQUIPO DOCENTE
+------------------------------------------------
+
+Además de la fotografía grupal 06-docentes.jpg, la sección Comunidad OEA puede
+mostrar una ficha individual por cada docente. Estas fotografías se guardan en:
+
+  Frontend-OEA/img/docentes/
+
+Archivos actuales:
+
+  Ana María Bastidas Angulo.avif
+  Ana Quispe Lozano.avif
+  Elena Gurumendi Cruz.avif
+  Jessica Yagual Salguero.avif
+  Maira Mendez Bastidas.avif
+  Morayma Barros Bastidas.avif
+  Ruth Franco de la Cruz.avif
+  Sandra Cabrera Cruz.avif
+
+Recomendaciones:
+
+  - Mantener el mismo encuadre y fondo para todas las fotografías.
+  - Usar nombres de archivo claros, sin duplicados.
+  - Confirmar la autorización de cada persona antes de publicar su imagen.
+  - No agregar teléfonos personales ni información privada en las fichas.
+
+La página Comunidad OEA conecta automáticamente estas fotografías con las
+tarjetas individuales del equipo docente.
+
+
+4. MEJORAR EL CONTENIDO VISUAL
 ------------------------------
 
 Cuando estén las fotos:
