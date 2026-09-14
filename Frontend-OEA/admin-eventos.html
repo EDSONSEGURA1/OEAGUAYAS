@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrar eventos | OEA</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="admin-eventos">
+  <header class="admin-cabecera">
+    <div>
+      <p class="hero-kicker">Panel local</p>
+      <h1>Administrar eventos</h1>
+      <p>Edita los eventos y descarga el archivo actualizado para publicarlo en la página.</p>
+    </div>
+    <a class="btn btn-secondary" href="eventos.html">Ver eventos</a>
+  </header>
+
+  <section class="admin-layout">
+    <form class="admin-form" id="evento-form">
+      <h2 id="form-titulo">Nuevo evento</h2>
+      <input type="hidden" id="evento-indice" value="-1">
+      <label for="evento-titulo">Título</label>
+      <input id="evento-titulo" required maxlength="120">
+      <label for="evento-fecha">Fecha</label>
+      <input id="evento-fecha" type="date" required>
+      <label for="evento-descripcion">Descripción corta</label>
+      <textarea id="evento-descripcion" required maxlength="600" rows="3"></textarea>
+      <label for="evento-detalles">Descripción completa</label>
+      <textarea id="evento-detalles" rows="5"></textarea>
+      <label for="evento-imagen">Foto principal</label>
+      <input id="evento-imagen" type="file" accept="image/*">
+      <label for="evento-galeria">Fotos adicionales</label>
+      <input id="evento-galeria" type="file" accept="image/*" multiple>
+      <p class="admin-ayuda">Selecciona imágenes desde tu computadora. Se guardarán dentro del archivo descargado.</p>
+      <div class="admin-acciones">
+        <button class="btn btn-primary" type="submit">Guardar evento</button>
+        <button class="btn btn-secondary" id="cancelar-edicion" type="button" hidden>Cancelar</button>
+      </div>
+      <p class="admin-mensaje" id="admin-mensaje" aria-live="polite"></p>
+    </form>
+
+    <section class="admin-lista">
+      <div class="admin-lista-cabecera">
+        <h2>Eventos guardados</h2>
+        <button class="btn btn-primary" id="descargar-eventos" type="button">Descargar eventos.json</button>
+      </div>
+      <div id="eventos-admin-lista"></div>
+    </section>
+  </section>
+</main>
+<script src="js/admin-eventos.js"></script>
+</body>
+</html>

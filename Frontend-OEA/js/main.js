@@ -87,7 +87,7 @@ document.querySelectorAll('img').forEach((imagen) => {
        "title": "Feria de Ciencias 2026",
        "date": "2026-10-14",
        "description": "Nuestros estudiantes exponen sus proyectos...",
-       "imageUrl": "../img/feria-ciencias.jpg"
+      "imageUrl": "img/fotos-colegio/feria-ciencias.jpg"
      },
      ...
    ]
@@ -97,7 +97,7 @@ const EVENTOS_CONFIG = {
   // Fuente manual actual: el archivo que edita el colegio.
   // Para conectar el backend real, reemplazar por su URL, ej:
   // 'https://api.colegiooea.edu.ec/events'
-  apiUrl: `${CONFIG.API_URL}/events`,
+  apiUrl: 'data/eventos.json',
   maxEventos: 6,
 };
 
@@ -129,9 +129,8 @@ async function cargarEventos() {
     console.error('No se pudieron cargar los eventos:', error);
     mostrarError(
       errorBox,
-      'No se pudieron cargar los eventos. La API no está disponible o el servidor ' +
-      'está bloqueando la solicitud desde Vercel. Revisa el despliegue y la configuración ' +
-      'CORS del backend.'
+      'No se pudieron cargar los eventos. Abre esta página con Live Server y revisa ' +
+      'que data/eventos.json tenga comas, llaves y rutas de imágenes correctas.'
     );
     grid.innerHTML = '';
   } finally {
@@ -182,6 +181,7 @@ function renderizarEventos(eventos, grid, template) {
     const fecha = nodo.querySelector('.evento-fecha');
     const titulo = nodo.querySelector('.evento-titulo');
     const descripcion = nodo.querySelector('.evento-descripcion');
+    const toggle = nodo.querySelector('.evento-toggle');
 
     const tieneFotoReal = Boolean(evento.imageUrl) && !/escudo-oea\.png$/i.test(evento.imageUrl);
     img.src = evento.imageUrl || 'img/escudo-oea.png';
@@ -189,11 +189,14 @@ function renderizarEventos(eventos, grid, template) {
     imagenWrap.classList.toggle('evento-imagen--placeholder', !tieneFotoReal);
 
     fecha.textContent = evento.date
-      ? formatoFecha.format(new Date(evento.date))
+      ? formatoFecha.format(fechaLocal(evento.date))
       : 'Fecha por confirmar';
 
     titulo.textContent = evento.title || 'Evento sin título';
     descripcion.textContent = evento.description || '';
+    toggle.addEventListener('click', () => {
+      abrirDetalleEvento(evento, formatoFecha);
+    });
 
     fragmento.appendChild(nodo);
   });
@@ -201,7 +204,75 @@ function renderizarEventos(eventos, grid, template) {
   grid.appendChild(fragmento);
 }
 
+function abrirDetalleEvento(evento, formatoFecha) {
+  const modal = document.getElementById('evento-modal');
+  const fecha = document.getElementById('evento-modal-fecha');
+  const titulo = document.getElementById('evento-modal-titulo');
+  const descripcion = document.getElementById('evento-modal-descripcion');
+  const galeria = document.getElementById('evento-modal-galeria');
+
+  fecha.textContent = evento.date ? formatoFecha.format(fechaLocal(evento.date)) : 'Fecha por confirmar';
+  titulo.textContent = evento.title || 'Evento sin título';
+  descripcion.textContent = evento.details || evento.description || '';
+  galeria.innerHTML = '';
+
+  (evento.imageUrls || [evento.imageUrl]).filter(Boolean).forEach((imageUrl) => {
+    const imagen = document.createElement('img');
+    imagen.src = imageUrl;
+    imagen.alt = evento.title ? `Fotografía del evento: ${evento.title}` : 'Fotografía del evento';
+    galeria.appendChild(imagen);
+  });
+
+  modal.hidden = false;
+  document.body.classList.add('modal-abierto');
+  modal.querySelector('.evento-modal-cerrar').focus();
+}
+
+function fechaLocal(valor) {
+  const [anio, mes, dia] = valor.split('-').map(Number);
+  return new Date(anio, mes - 1, dia);
+}
+
+function cerrarDetalleEvento() {
+  const modal = document.getElementById('evento-modal');
+  if (!modal) return;
+  modal.hidden = true;
+  document.body.classList.remove('modal-abierto');
+}
+
+document.addEventListener('click', (evento) => {
+  if (evento.target.matches('[data-evento-cerrar]')) cerrarDetalleEvento();
+});
+
+document.addEventListener('keydown', (evento) => {
+  if (evento.key === 'Escape') cerrarDetalleEvento();
+});
+
 document.addEventListener('DOMContentLoaded', cargarEventos);
+
+function resolverImagenesFaltantes() {
+  document.querySelectorAll('img').forEach((imagen) => {
+    if (imagen.src.includes('Jessica%20Yagual') || imagen.src.includes('Ruth%20Franco')) {
+      imagen.closest('.staff-card')?.remove();
+      return;
+    }
+
+    const resolver = () => {
+      if (imagen.src.includes('Jessica%20Yagual') || imagen.src.includes('Ruth%20Franco')) {
+        imagen.closest('.staff-card')?.remove();
+        return;
+      }
+
+      imagen.src = 'img/fotos-colegio/WhatsApp Image 2026-09-11 at 07.35.08.jpeg';
+      imagen.classList.add('image-fallback');
+    };
+
+    imagen.addEventListener('error', resolver, { once: true });
+    if (imagen.complete && imagen.naturalWidth === 0) resolver();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', resolverImagenesFaltantes);
 
 /* =========================================================
    Formulario de Matriculación

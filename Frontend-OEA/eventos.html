@@ -50,23 +50,42 @@
   <section class="page-banner">
     <div class="page-banner-inner">
       <h1>Eventos</h1>
-      <p>Estamos preparando novedades especiales para nuestra comunidad educativa.</p>
+      <p>Conoce las actividades y momentos especiales de nuestra comunidad educativa.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="section-inner">
 
-      <div class="coming-soon" aria-live="polite">
-        <span class="coming-soon-mark">OEA</span>
-        <h2>Próximamente</h2>
-        <h2>Algo importante está por llegar</h2>
-        <p>Pronto publicaremos nuevas actividades, comunicados y momentos especiales de nuestra comunidad educativa.</p>
-      </div>
+      <div id="eventos-estado" class="eventos-estado" aria-live="polite">Cargando eventos...</div>
+      <p id="eventos-error" class="eventos-error" hidden></p>
+      <div id="eventos-grid" class="eventos-grid"></div>
+      <template id="evento-card-template">
+        <article class="evento-card">
+          <div class="evento-imagen"><img src="img/escudo-oea.png" alt=""></div>
+          <div class="evento-contenido">
+            <p class="evento-fecha"></p>
+            <h2 class="evento-titulo"></h2>
+            <p class="evento-descripcion"></p>
+            <button class="evento-toggle" type="button">Ver evento</button>
+          </div>
+        </article>
+      </template>
     </div>
   </section>
 
 </main>
+
+<div class="evento-modal" id="evento-modal" hidden>
+  <div class="evento-modal-fondo" data-evento-cerrar></div>
+  <section class="evento-modal-contenido" role="dialog" aria-modal="true" aria-labelledby="evento-modal-titulo">
+    <button class="evento-modal-cerrar" type="button" data-evento-cerrar aria-label="Cerrar detalle">×</button>
+    <p class="evento-fecha" id="evento-modal-fecha"></p>
+    <h2 id="evento-modal-titulo"></h2>
+    <p class="evento-modal-descripcion" id="evento-modal-descripcion"></p>
+    <div class="evento-galeria" id="evento-modal-galeria" aria-label="Fotografías del evento"></div>
+  </section>
+</div>
 
 <footer class="site-footer">
   <div class="footer-inner">

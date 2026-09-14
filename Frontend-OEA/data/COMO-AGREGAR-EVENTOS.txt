@@ -1,6 +1,35 @@
 CÓMO AGREGAR UN EVENTO NUEVO A LA PÁGINA
 ==========================================
 
+CAPACITACIÓN PARA LA PERSONA ENCARGADA
+
+La página pública de eventos es:
+
+  eventos.html
+
+La página para administrar eventos es:
+
+  admin-eventos.html
+
+No se editan eventos desde eventos.html. Entra siempre a admin-eventos.html
+usando Live Server:
+
+  http://127.0.0.1:5500/Frontend-OEA/admin-eventos.html
+
+Desde ese panel puedes:
+
+- Crear un evento nuevo.
+- Pulsar "Editar" para modificar un evento existente.
+- Pulsar "Eliminar" para quitar un evento del borrador.
+- Descargar el archivo actualizado con "Descargar eventos.json".
+
+Después de descargar el archivo, reemplaza el archivo original en:
+
+  Frontend-OEA/data/eventos.json
+
+Finalmente, recarga eventos.html para comprobar el resultado. El panel local
+no modifica archivos del proyecto automáticamente por seguridad del navegador.
+
 No necesitas saber programar. Solo tienes que editar el archivo:
 
     data/eventos.json
@@ -13,8 +42,13 @@ Vas a ver una lista de eventos, cada uno con esta forma:
     {
       "title": "Feria de Ciencias 2026",
       "date": "2026-10-14",
-      "description": "Nuestros estudiantes de Bachillerato exponen proyectos de investigación aplicada.",
-      "imageUrl": "../img/escudo-oea.png"
+      "description": "Descripción corta que aparece en la tarjeta.",
+      "details": "Descripción más completa que aparece al pulsar Ver evento.",
+      "imageUrl": "img/fotos-colegio/feria-ciencias.jpg",
+      "imageUrls": [
+        "img/fotos-colegio/feria-ciencias.jpg",
+        "img/fotos-colegio/feria-ciencias-2.jpg"
+      ]
     },
 
 PARA AGREGAR UN EVENTO NUEVO:
@@ -26,13 +60,24 @@ PARA AGREGAR UN EVENTO NUEVO:
    - "title": el nombre del evento
    - "date": la fecha en formato AAAA-MM-DD (año-mes-día)
    - "description": una descripción corta
-   - "imageUrl": si tienes una foto del evento, súbela a la carpeta
-     "img" y escribe aquí "img/nombre-de-tu-foto.jpg". Si no tienes
-     foto, puedes dejar "img/escudo-oea.png".
+   - "details": texto opcional que aparece al pulsar "Ver evento".
+   - Desde admin-eventos.html selecciona la foto principal y las fotos
+     adicionales directamente desde tu computadora.
+   - El panel guardará las imágenes dentro del archivo descargado. No
+     necesitas escribir rutas ni cambiar nombres de archivos.
+   - Si no seleccionas una foto, se usará el escudo de la institución.
 4. Guarda el archivo (Ctrl + S). Mantenlo como texto plano (.json), no
    lo guardes como .txt ni como Word.
-5. Recarga la página de Eventos en el navegador y el evento nuevo va a
-   aparecer automáticamente.
+5. Abre la página usando un servidor local y recarga Eventos. No abras
+  eventos.html con doble clic, porque el navegador puede bloquear la
+  lectura de data/eventos.json por seguridad.
+
+PARA PROBARLO EN VS CODE:
+
+1. Instala la extensión "Live Server".
+2. Haz clic derecho en Frontend-OEA/eventos.html.
+3. Elige "Open with Live Server".
+4. Guarda eventos.json y recarga la página.
 
 PARA QUITAR UN EVENTO:
 
@@ -47,6 +92,8 @@ IMPORTANTE:
   no haya quedado una coma de más o una llave sin cerrar. La forma más
   fácil de verificar esto es copiar todo el contenido del archivo y
   pegarlo en https://jsonlint.com para que te diga si hay algún error.
+- El último evento no lleva coma después de su llave final.
+- Las fechas deben escribirse como AAAA-MM-DD, por ejemplo 2026-10-14.
 
 NOTA TÉCNICA (para quien dé mantenimiento más adelante):
 Este archivo es un reemplazo temporal y manual de una base de datos.
