@@ -692,6 +692,96 @@ ul { padding: 0; margin: 0; list-style: none; }
 
 .eventos-vacio { color: var(--ink-soft); grid-column: 1 / -1; }
 
+/* Historia documental (estante de tomos) */
+.breadcrumb {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0.7rem;
+}
+.breadcrumb a { color: var(--white); }
+.breadcrumb a:hover { color: var(--turquoise-500); }
+
+.tomos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.6rem;
+}
+
+.tomo-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tomo-card:hover,
+.tomo-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px -14px rgba(15, 39, 69, 0.35);
+  outline: none;
+}
+.tomo-icono {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background: var(--turquoise-100);
+  color: var(--turquoise-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tomo-icono svg { width: 24px; height: 24px; }
+.tomo-etiqueta { display: none; }
+.tomo-titulo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--navy-900);
+}
+.tomo-periodo {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--turquoise-100);
+  color: var(--turquoise-600);
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+}
+.tomo-cta {
+  margin-top: auto;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--navy-900);
+}
+.tomo-card:hover .tomo-cta { color: var(--turquoise-600); }
+
+.tomo-card--proximo {
+  background: var(--paper-tint);
+  border: 2px dashed var(--line);
+  box-shadow: none;
+  color: var(--ink-soft);
+  cursor: default;
+}
+.tomo-card--proximo:hover { transform: none; box-shadow: none; }
+.tomo-card--proximo .tomo-icono {
+  background: transparent;
+  border: 2px dashed var(--line);
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+.tomo-card--proximo .tomo-titulo { color: var(--navy-900); }
+.tomo-card--proximo .tomo-periodo { background: transparent; color: var(--ink-soft); padding: 0; }
+
 /* Blog */
 .blog-grid {
   display: grid;

@@ -275,6 +275,133 @@ function resolverImagenesFaltantes() {
 document.addEventListener('DOMContentLoaded', resolverImagenesFaltantes);
 
 /* =========================================================
+   Historia documental — estante de tomos
+   ---------------------------------------------------------
+   Igual que Eventos, se administra editando a mano el archivo
+   data/historia-tomos.json (instrucciones en
+   data/COMO-AGREGAR-TOMOS.txt), sin tocar HTML ni CSS cada vez
+   que exista un tomo nuevo.
+
+   Formato esperado en el JSON:
+   [
+     {
+       "titulo": "Tomo 1",
+       "periodo": "1981 - 1986",
+       "archivo": "OEA GUAYAS 1981-1986.pdf"
+     },
+     ...
+   ]
+
+   Si un tomo no trae "archivo" (o viene vacío), la tarjeta se
+   muestra como "Próximamente" en vez de un enlace al PDF.
+   ========================================================= */
+
+const TOMOS_CONFIG = {
+  apiUrl: 'data/historia-tomos.json',
+};
+
+async function cargarTomosHistoria() {
+  const estante = document.getElementById('tomos-estante');
+  const estado = document.getElementById('tomos-estado');
+  const errorBox = document.getElementById('tomos-error');
+
+  if (!estante) return;
+
+  mostrarCargando(estado, errorBox, estante);
+
+  try {
+    const respuesta = await fetch(TOMOS_CONFIG.apiUrl, {
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+    });
+
+    if (!respuesta.ok) {
+      throw new Error(`No se pudo leer el archivo de tomos (estado ${respuesta.status})`);
+    }
+
+    const datos = await respuesta.json();
+    const tomos = Array.isArray(datos) ? datos : [];
+
+    renderizarTomos(tomos, estante);
+  } catch (error) {
+    console.error('No se pudieron cargar los tomos:', error);
+    mostrarError(
+      errorBox,
+      'No se pudieron cargar los tomos históricos. Abre esta página con Live Server y revisa ' +
+      'que data/historia-tomos.json tenga comas, llaves y nombres de archivo correctos.'
+    );
+    estante.innerHTML = '';
+  } finally {
+    ocultarCargando(estado);
+  }
+}
+
+function renderizarTomos(tomos, estante) {
+  estante.innerHTML = '';
+
+  if (!tomos.length) {
+    const vacio = document.createElement('p');
+    vacio.className = 'eventos-vacio';
+    vacio.textContent = 'Aún no hay tomos publicados. Vuelve pronto.';
+    estante.appendChild(vacio);
+    return;
+  }
+
+  const fragmento = document.createDocumentFragment();
+  tomos.forEach((tomo) => fragmento.appendChild(crearTarjetaTomo(tomo)));
+  estante.appendChild(fragmento);
+}
+
+const TOMO_ICONO_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+  'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+  '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>' +
+  '<polyline points="14 2 14 8 20 8"/></svg>';
+
+function crearTarjetaTomo(tomo) {
+  const tieneArchivo = Boolean(tomo.archivo);
+  const tarjeta = document.createElement(tieneArchivo ? 'a' : 'div');
+  tarjeta.className = tieneArchivo ? 'tomo-card' : 'tomo-card tomo-card--proximo';
+
+  if (tieneArchivo) {
+    tarjeta.href = tomo.archivo;
+    tarjeta.target = '_blank';
+    tarjeta.rel = 'noopener';
+  }
+
+  const icono = document.createElement('span');
+  icono.className = 'tomo-icono';
+  if (tieneArchivo) {
+    icono.innerHTML = TOMO_ICONO_SVG;
+  } else {
+    icono.setAttribute('aria-hidden', 'true');
+    icono.textContent = '+';
+  }
+  tarjeta.appendChild(icono);
+
+  const titulo = document.createElement('p');
+  titulo.className = 'tomo-titulo';
+  titulo.textContent = tomo.titulo || (tieneArchivo ? 'Tomo' : 'Próximo tomo');
+  tarjeta.appendChild(titulo);
+
+  const periodo = document.createElement('span');
+  periodo.className = 'tomo-periodo';
+  periodo.textContent = tomo.periodo || (tieneArchivo ? '' : 'Próximamente');
+  tarjeta.appendChild(periodo);
+
+  if (tieneArchivo) {
+    const cta = document.createElement('span');
+    cta.className = 'tomo-cta';
+    cta.textContent = 'Ver PDF →';
+    tarjeta.appendChild(cta);
+  }
+
+  return tarjeta;
+}
+
+document.addEventListener('DOMContentLoaded', cargarTomosHistoria);
+
+/* =========================================================
    Formulario de Matriculación
    ---------------------------------------------------------
    Envía los datos al mismo backend que atiende /events.
