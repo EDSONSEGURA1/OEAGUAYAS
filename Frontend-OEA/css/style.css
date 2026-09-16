@@ -110,7 +110,6 @@ p { margin: 0 0 1em; max-width: 62ch; color: var(--ink-soft); }
 .staff-card > div { padding: 1rem 1.25rem 1.25rem; }
 .staff-card p { margin-bottom: 0; }
 .community-block .staff-intro { grid-template-columns: 1fr; }
-.community-block .staff-intro img, .community-block .staff-card img { display: none; }
 .community-block .staff-card > div { padding: 1.25rem; }
 
 .community-heading { max-width: 700px; margin-bottom: 3rem; }
