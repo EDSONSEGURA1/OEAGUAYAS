@@ -14,6 +14,12 @@
     "titulo": "Libro 3",
     "periodo": "1990 - 1997",
     "archivo": "OEA GUAYAS 1990-1997.pdf"
-  }
+  },
+  
+   {
+    "titulo": "Libro 4",
+    "periodo": "1997 - 2000",
+    "archivo": "OEA GUAYAS 1997-2000.pdf"
+  } 
 
 ]
