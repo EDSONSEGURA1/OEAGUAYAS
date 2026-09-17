@@ -3,76 +3,890 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Comunidad OEA | Unidad Educativa Particular OEA</title>
+
 <meta name="description" content="Uniformes y equipo docente de la Unidad Educativa Particular OEA.">
+
 <link rel="icon" href="img/escudo-oea.png" type="image/png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="css/style.css">
+
 <style>
-  /* Placeholder temporal para fotos pendientes (mientras se toman/actualizan) */
-  .staff-photo-pending{
-    width:100%;
-    aspect-ratio:1/1;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#e4e4e4;
-    color:#6b6b6b;
-    font-family:'Montserrat',sans-serif;
-    font-weight:700;
-    font-size:1.5rem;
-    letter-spacing:0.05em;
+
+/* =========================================================
+   FOTOS DEL EQUIPO DOCENTE
+   ========================================================= */
+
+.staff-card {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+}
+
+/*
+   contain mantiene la fotografía completa.
+   No recorta caras ni partes del cuerpo.
+*/
+.staff-card > img {
+  width: 100%;
+  height: 360px;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  background: #f3f5f7;
+  filter: brightness(1.03) contrast(1.03) saturate(1.02);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.staff-card:hover > img {
+  filter: brightness(1.06) contrast(1.05) saturate(1.04);
+  transform: scale(1.01);
+}
+
+/* Información debajo de la fotografía */
+.staff-card > div {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.staff-card p {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   FOTO PENDIENTE
+   ========================================================= */
+
+.staff-photo-pending {
+  width: 100%;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f5f7;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .staff-card > img,
+  .staff-photo-pending {
+    height: 380px;
   }
+
+}
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .staff-card > img,
+  .staff-photo-pending {
+    height: 360px;
+  }
+
+}
+
 </style>
 </head>
+
 <body>
-<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<a class="skip-link" href="#contenido">
+  Saltar al contenido
+</a>
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
 <header class="site-header" id="site-header">
+
   <div class="nav-wrap">
-    <a href="index.html" class="brand"><img src="img/escudo-oea.png" alt="Escudo Unidad Educativa OEA" class="brand-mark"><span class="brand-text"><strong>OEA</strong><em>Unidad Educativa Particular</em></span></a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+
+    <a href="index.html" class="brand">
+
+      <img
+        src="img/escudo-oea.png"
+        alt="Escudo Unidad Educativa OEA"
+        class="brand-mark"
+      >
+
+      <span class="brand-text">
+        <strong>OEA</strong>
+        <em>Unidad Educativa Particular</em>
+      </span>
+
+    </a>
+
+    <button
+      class="nav-toggle"
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+      aria-label="Abrir menú"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <nav class="nav-menu" id="nav-menu">
+
       <ul class="nav-links">
-        <li><a href="index.html">Inicio</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="oferta-academica.html">Oferta Académica</a></li><li><a href="comunidad.html" aria-current="page">Comunidad OEA</a></li><li><a href="matriculacion.html">Matriculación</a></li><li><a href="eventos.html">Eventos</a></li><li><a href="contactos.html">Contactos</a></li>
+
+        <li>
+          <a href="index.html">Inicio</a>
+        </li>
+
+        <li>
+          <a href="nosotros.html">Nosotros</a>
+        </li>
+
+        <li>
+          <a href="oferta-academica.html">Oferta Académica</a>
+        </li>
+
+        <li>
+          <a href="comunidad.html" aria-current="page">
+            Comunidad OEA
+          </a>
+        </li>
+
+        <li>
+          <a href="matriculacion.html">Matriculación</a>
+        </li>
+
+        <li>
+          <a href="eventos.html">Eventos</a>
+        </li>
+
+        <li>
+          <a href="contactos.html">Contactos</a>
+        </li>
+
       </ul>
-      <a href="https://wa.me/593994201208?text=Hola,%20deseo%20información%20para%20matricular%20a%20mi%20representado%20en%20la%20Unidad%20Educativa%20OEA" class="btn btn-primary nav-cta" target="_blank" rel="noopener">Matricúlate ahora</a>
+
+      <a
+        href="https://wa.me/593994201208?text=Hola,%20deseo%20información%20para%20matricular%20a%20mi%20representado%20en%20la%20Unidad%20Educativa%20OEA"
+        class="btn btn-primary nav-cta"
+        target="_blank"
+        rel="noopener"
+      >
+        Matricúlate ahora
+      </a>
+
     </nav>
+
   </div>
+
 </header>
+
+
+<!-- =========================================================
+     CONTENIDO
+     ========================================================= -->
+
 <main id="contenido">
-  <section class="page-banner"><div class="page-banner-inner"><h1>Comunidad OEA</h1><p>La identidad, la presentación y las personas que hacen posible nuestra comunidad educativa.</p></div></section>
-  <section class="section"><div class="section-inner">
-    <div class="community-heading"><p class="hero-kicker">Presentación institucional</p><h2>Todo lo que representa a la familia OEA</h2><p>Conoce nuestros uniformes y al equipo docente que acompaña a los estudiantes en cada etapa.</p></div>
-    <div class="community-block"><div class="community-block-heading"><span class="section-label">01</span><div><h2>Uniformes</h2><p>Modelos institucionales para cada jornada, actividad y ceremonia.</p></div></div><div class="catalog-grid">
-      <article class="catalog-card"><img src="img/fotos-colegio/WhatsApp Image 2026-09-11 at 08.49.23.jpeg" alt="Uniforme diario de la Unidad Educativa OEA"><div><h3>Uniforme diario</h3><p>Presentación institucional para la jornada regular.</p><span class="catalog-note">Tallas y precios disponibles en secretaría</span></div></article>
-      <article class="catalog-card"><img src="img/fotos-colegio/WhatsApp Image 2026-09-11 at 07.35.08 (1).jpeg" alt="Uniforme deportivo de la Unidad Educativa OEA"><div><h3>Uniforme deportivo</h3><p>Indumentaria para educación física y actividades deportivas.</p><span class="catalog-note">Tallas y precios disponibles en secretaría</span></div></article>
-      <article class="catalog-card"><img src="img/fotos-colegio/WhatsApp Image 2026-09-11 at 08.49.27 (2).jpeg" alt="Uniforme de parada de la Unidad Educativa OEA"><div><h3>Uniforme de parada</h3><p>Presentación formal para actos y ceremonias institucionales.</p><span class="catalog-note">Tallas y precios disponibles en secretaría</span></div></article>
-    </div></div>
-    <div class="community-block"><div class="community-block-heading"><span class="section-label">02</span><div><h2>Nuestro equipo</h2><p>Docentes y personal de apoyo comprometidos con una formación integral y cercana.</p></div></div><div class="staff-intro"><img src="img/fotos-colegio/06-docentes.jpg" alt="Equipo docente de la Unidad Educativa OEA"><div><h2>Una comunidad que enseña con propósito</h2><p>Nuestro equipo docente trabaja con compromiso, cercanía y vocación para formar estudiantes autónomos, responsables y preparados para su futuro.</p></div></div><div class="staff-grid">
-<article class="staff-card"><img src="img/docentes/Ana%20Bastidas.png" alt="Ana María Bastidas Angulo"><div><h3>Ana María Bastidas Angulo</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Rector.jpg" alt="Dr. Roosevelt Barros Morales"><div><h3>Dr. Roosevelt Barros Morales, Msc.</h3><p>Rector y docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Ana%20Quispe%20Lozano.png" alt="Ana Quispe Lozano"><div><h3>Ana Quispe Lozano</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Elena%20Gurumendi.png" alt="Elena Gurumendi Cruz"><div><h3>Elena Gurumendi Cruz</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Mayra%20Mendez.png" alt="Mayra Mendez"><div><h3>Mayra Mendez</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Morayma%20Barros.png" alt="Morayma Barros"><div><h3>Morayma Barros</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Sandra%20Cabrera.png" alt="Sandra Cabrera"><div><h3>Sandra Cabrera</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/David%20Prendes.png" alt="David Prendes"><div><h3>David Prendes</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Linda%20Lindao.avif" alt="Linda Lindao"><div><h3>Linda Lindao</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Maurixi%20Quispe.avif" alt="Maurixi Quispe"><div><h3>Maurixi Quispe</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Alexandra%20Ponce.avif" alt="Alexandra Ponce"><div><h3>Alexandra Ponce</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Mayra%20Tutiven.png" alt="Mayda Tutiven"><div><h3>Mayda Tutiven</h3><p>Docente de la Unidad Educativa OEA (jornada vespertina).</p></div></article>
-<article class="staff-card"><img src="img/docentes/Isabel%20Najera.png" alt="Isabel Najera"><div><h3>Isabel Najera</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Fernanda%20Marcillo.png" alt="Fernanda Marcillo"><div><h3>Fernanda Marcillo</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/%C3%81mbar%20Marcillo.png" alt="Ámbar Marcillo"><div><h3>Ámbar Marcillo</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Karla%20Dominguez.png" alt="Karla Dominguez"><div><h3>Karla Dominguez</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-<article class="staff-card"><img src="img/docentes/Jennifer%20Navarrete.avif" alt="Jennifer Navarrete"><div><h3>Jennifer Navarrete</h3><p>Personal de apoyo de la Unidad Educativa OEA.</p></div></article>
-<!-- FOTO PENDIENTE: reemplazar el placeholder por <img src="img/docentes/Freddy%20Aguirre.avif" alt="Freddy Aguirre"> cuando tengas la foto --><article class="staff-card"><div class="staff-photo-pending" aria-label="Foto pendiente de Freddy Aguirre">FA</div><div><h3>Freddy Aguirre</h3><p>Docente de la Unidad Educativa OEA.</p></div></article>
-</div></div>
-  </div></section>
+
+  <!-- Banner -->
+
+  <section class="page-banner">
+
+    <div class="page-banner-inner">
+
+      <h1>Comunidad OEA</h1>
+
+      <p>
+        La identidad, la presentación y las personas que hacen posible
+        nuestra comunidad educativa.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       INTRODUCCIÓN
+       ======================================================= -->
+
+  <section class="section">
+
+    <div class="section-inner">
+
+      <div class="community-heading">
+
+        <p class="hero-kicker">
+          Presentación institucional
+        </p>
+
+        <h2>
+          Todo lo que representa a la familia OEA
+        </h2>
+
+        <p>
+          Conoce nuestros uniformes y al equipo docente que acompaña
+          a los estudiantes en cada etapa.
+        </p>
+
+      </div>
+
+
+      <!-- =====================================================
+           UNIFORMES
+           ===================================================== -->
+
+      <div class="community-block">
+
+        <div class="community-block-heading">
+
+          <span class="section-label">
+            01
+          </span>
+
+          <div>
+
+            <h2>
+              Uniformes
+            </h2>
+
+            <p>
+              Modelos institucionales para cada jornada,
+              actividad y ceremonia.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="catalog-grid">
+
+          <article class="catalog-card">
+
+            <img
+              src="img/fotos-colegio/WhatsApp Image 2026-09-11 at 08.49.23.jpeg"
+              alt="Uniforme diario de la Unidad Educativa OEA"
+            >
+
+            <div>
+
+              <h3>
+                Uniforme diario
+              </h3>
+
+              <p>
+                Presentación institucional para la jornada regular.
+              </p>
+
+              <span class="catalog-note">
+                Tallas y precios disponibles en secretaría
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article class="catalog-card">
+
+            <img
+              src="img/fotos-colegio/WhatsApp Image 2026-09-11 at 07.35.08 (1).jpeg"
+              alt="Uniforme deportivo de la Unidad Educativa OEA"
+            >
+
+            <div>
+
+              <h3>
+                Uniforme deportivo
+              </h3>
+
+              <p>
+                Indumentaria para educación física y actividades deportivas.
+              </p>
+
+              <span class="catalog-note">
+                Tallas y precios disponibles en secretaría
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article class="catalog-card">
+
+            <img
+              src="img/fotos-colegio/WhatsApp Image 2026-09-11 at 08.49.27 (2).jpeg"
+              alt="Uniforme de parada de la Unidad Educativa OEA"
+            >
+
+            <div>
+
+              <h3>
+                Uniforme de parada
+              </h3>
+
+              <p>
+                Presentación formal para actos y ceremonias institucionales.
+              </p>
+
+              <span class="catalog-note">
+                Tallas y precios disponibles en secretaría
+              </span>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           EQUIPO DOCENTE
+           ===================================================== -->
+
+      <div class="community-block">
+
+        <div class="community-block-heading">
+
+          <span class="section-label">
+            02
+          </span>
+
+          <div>
+
+            <h2>
+              Nuestro equipo
+            </h2>
+
+            <p>
+              Docentes y personal de apoyo comprometidos con una
+              formación integral y cercana.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- Introducción del equipo -->
+
+        <div class="staff-intro">
+
+          <img
+            src="img/fotos-colegio/06-docentes.jpg"
+            alt="Equipo docente de la Unidad Educativa OEA"
+          >
+
+          <div>
+
+            <h2>
+              Una comunidad que enseña con propósito
+            </h2>
+
+            <p>
+              Nuestro equipo docente trabaja con compromiso,
+              cercanía y vocación para formar estudiantes autónomos,
+              responsables y preparados para su futuro.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FOTOS DE DOCENTES
+             ================================================= -->
+
+        <div class="staff-grid">
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Ana%20Bastidas.png"
+              alt="Ana María Bastidas Angulo"
+            >
+
+            <div>
+
+              <h3>
+                Ana María Bastidas Angulo
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Rector.jpg"
+              alt="Dr. Roosevelt Barros Morales"
+            >
+
+            <div>
+
+              <h3>
+                Dr. Roosevelt Barros Morales, Msc.
+              </h3>
+
+              <p>
+                Rector y docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Ana%20Quispe%20Lozano.png"
+              alt="Ana Quispe Lozano"
+            >
+
+            <div>
+
+              <h3>
+                Ana Quispe Lozano
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Elena%20Gurumendi.png"
+              alt="Elena Gurumendi Cruz"
+            >
+
+            <div>
+
+              <h3>
+                Elena Gurumendi Cruz
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Mayra%20Mendez.png"
+              alt="Mayra Mendez"
+            >
+
+            <div>
+
+              <h3>
+                Mayra Mendez
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Morayma%20Barros.png"
+              alt="Morayma Barros"
+            >
+
+            <div>
+
+              <h3>
+                Morayma Barros
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Sandra%20Cabrera.png"
+              alt="Sandra Cabrera"
+            >
+
+            <div>
+
+              <h3>
+                Sandra Cabrera
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/David%20Prendes.png"
+              alt="David Prendes"
+            >
+
+            <div>
+
+              <h3>
+                David Prendes
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Linda%20Lindao.avif"
+              alt="Linda Lindao"
+            >
+
+            <div>
+
+              <h3>
+                Linda Lindao
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Maurixi%20Quispe.avif"
+              alt="Maurixi Quispe"
+            >
+
+            <div>
+
+              <h3>
+                Maurixi Quispe
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Alexandra%20Ponce.avif"
+              alt="Alexandra Ponce"
+            >
+
+            <div>
+
+              <h3>
+                Alexandra Ponce
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Mayra%20Tutiven.png"
+              alt="Mayda Tutiven"
+            >
+
+            <div>
+
+              <h3>
+                Mayda Tutiven
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA
+                (jornada vespertina).
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Isabel%20Najera.png"
+              alt="Isabel Najera"
+            >
+
+            <div>
+
+              <h3>
+                Isabel Najera
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Fernanda%20Marcillo.png"
+              alt="Fernanda Marcillo"
+            >
+
+            <div>
+
+              <h3>
+                Fernanda Marcillo
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/%C3%81mbar%20Marcillo.png"
+              alt="Ámbar Marcillo"
+            >
+
+            <div>
+
+              <h3>
+                Ámbar Marcillo
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Karla%20Dominguez.png"
+              alt="Karla Dominguez"
+            >
+
+            <div>
+
+              <h3>
+                Karla Dominguez
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <article class="staff-card">
+
+            <img
+              src="img/docentes/Jennifer%20Navarrete.avif"
+              alt="Jennifer Navarrete"
+            >
+
+            <div>
+
+              <h3>
+                Jennifer Navarrete
+              </h3>
+
+              <p>
+                Personal de apoyo de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- FOTO PENDIENTE -->
+
+          <article class="staff-card">
+
+            <div
+              class="staff-photo-pending"
+              aria-label="Foto pendiente de Freddy Aguirre"
+            >
+              FA
+            </div>
+
+            <div>
+
+              <h3>
+                Freddy Aguirre
+              </h3>
+
+              <p>
+                Docente de la Unidad Educativa OEA.
+              </p>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
 </main>
-<footer class="site-footer"><div class="footer-inner"><img src="img/escudo-oea.png" alt="Escudo OEA" class="footer-logo"><p class="footer-lema">Orden, Trabajo, Disciplina = Progreso</p><div class="footer-redes"><a href="https://www.facebook.com/OEA-Guayas-105409211131747/" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/ueoeaec/" target="_blank" rel="noopener">Instagram</a></div><p class="footer-copy">© 2026 Unidad Educativa Particular OEA. Todos los derechos reservados.</p></div></footer>
-<script src="js/config.js"></script><script src="js/main.js"></script>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <img
+      src="img/escudo-oea.png"
+      alt="Escudo OEA"
+      class="footer-logo"
+    >
+
+    <p class="footer-lema">
+      Orden, Trabajo, Disciplina = Progreso
+    </p>
+
+    <div class="footer-redes">
+
+      <a
+        href="https://www.facebook.com/OEA-Guayas-105409211131747/"
+        target="_blank"
+        rel="noopener"
+      >
+        Facebook
+      </a>
+
+      <a
+        href="https://www.instagram.com/ueoeaec/"
+        target="_blank"
+        rel="noopener"
+      >
+        Instagram
+      </a>
+
+    </div>
+
+    <p class="footer-copy">
+      © 2026 Unidad Educativa Particular OEA.
+      Todos los derechos reservados.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+
 </body>
 </html>
+
